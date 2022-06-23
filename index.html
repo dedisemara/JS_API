@@ -24,41 +24,6 @@
         </nav>
     </div><br>
     <div class="col-12 container">
-        <!-- <div class="dropdown">
-            <button class="btn btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Pilih wilayah
-            </button>
-            <ul class="dropdown-menu" id="list_wilayah" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" id="kepulauan_seribu">Kepulauan Seribu</a></li>
-              <li><a class="dropdown-item" id="cilandak">Cilandak</a></li>
-              <li><a class="dropdown-item" id="kebayoran_baru">Kebayoran Baru</a></li>
-              <li><a class="dropdown-item" id="kebayoran_lama">Kebayoran Lama</a></li>
-              <li><a class="dropdown-item" id="pasar_minggu">Pasar Minggu</a></li>
-              <li><a class="dropdown-item" id="pesanggrahan">Pesanggrahan</a></li>
-              <li><a class="dropdown-item" id="setia_budi">Setia Budi</a></li>
-              <li><a class="dropdown-item" id="tebet">Tebet</a></li>
-              <li><a class="dropdown-item" id="jakarta_pusat">Jakarta Pusat</a></li>
-              <li><a class="dropdown-item" id="pulo_gadung">Pulo Gadung</a></li>
-              <li><a class="dropdown-item" id="cipayung">Cipayung</a></li>
-            </ul>
-        </div><br> -->
-        <!-- <div class="dropdown">
-            <button class="btn dropdown-toggle btn-secondary" type="button" data-toggle="dropdown" id="btn_baud" >
-                <span class="caret">Pilih Wilayah</span></button>
-            <ul class="dropdown-menu" id="baudrate">
-                <li><input type="hidden" value="kepulauan_seribu"/><a>Kepulauan Seribu</a></li>
-                <li><input type="hidden" value="cilandak"/><a>Cilandak</a></li>
-                <li><input type="hidden" value="kebayoran_baru"/><a>Kebayoran Baru</a></li>
-                <li><input type="hidden" value="kebayoran_lama"/><a>Kebayoran Lama</a></li>
-                <li><input type="hidden" value="pasar_minggu"/><a>Pasar Minggu</a></li>
-                <li><input type="hidden" value="pesanggrahan"/><a>Pesanggrahan</a></li>
-                <li><input type="hidden" value="setia_budi"/><a>Setia Budi</a></li>
-                <li><input type="hidden" value="tebet"/><a>Tebet</a></li>
-                <li><input type="hidden" value="jakarta_pusat"/><a>Jakarta Pusat</a></li>
-                <li><input type="hidden" value="pulo_gadung"/><a>Pulo Gadung</a></li>
-                <li><input type="hidden" value="cipayung"/><a>Cipayung</a></li>
-            </ul>
-        </div><br> -->
           <select id="select1">
             <option value="" disabled selected hidden>Pilih Wilayah</option>
             <option value="kepulauan_seribu">Kepulauan Seribu</option>
@@ -98,95 +63,6 @@
     <script src="popper.min.js"></script>
     <script src="bootstrap.min.js"></script>
     <script src="jquery.dataTables.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
-    <!-- <script>
-        $(document).ready(function(){
-            $("#baudrate li a").click(function() {
-               baudrate = $(this).parent().find('input').val();
-               alert(baudrate);
-           });
-       });
-    </script> -->
-    <!-- <script>
-        $(document).ready(function () {
-            $("#baudrate li a").click(function() {
-                value = $(this).parent().find('input').val();
-                let object_data = {};
-                fetch('https://datasekolahapi.herokuapp.com/api/data/sd/jakarta/' + value)
-                .then(response => response.json())
-                .then(data => object_data.data = data)
-                .then(object_data => {
-                    console.log(object_data.length)
-                    for(let x = 1; x <= object_data.length; x ++){
-                        console.log(x)
-                    }
-                    $('#table_id').DataTable({
-                        data: object_data,
-                        columns: [
-                        {data:"nama"},
-                        {data:"status"},
-                        {data:"jenjang"},
-                        {data:"npsn"},
-                        {data:"desa"},
-                        {data:"kecamatan"},
-                        {data:"kabupaten"},
-                        {data:"provinsi"},
-                        {data:"alamat"},
-                        {data:"kodepos"}
-                        ],
-                    });
-                })
-            });
-        });
-    </script> -->
-    <script>
-        let datatable_obj = null;
-        let selected_wilayah = "";
-
-        function initialize_datatables(wilayah) {
-            let object_data = {};
-            fetch('https://datasekolahapi.herokuapp.com/api/data/sd/jakarta/' + wilayah)
-            .then(response => response.json())
-            .then(data => object_data.data = data)
-            .then(object_data => {
-                if (datatable_obj) datatable_obj.destroy();
-                datatable_obj = $('#table_id').DataTable({
-                    data: object_data,
-                    columns: [
-                        {
-                            render: function ( data, type, full, meta ) {
-                                return  meta.row + 1;
-                            }
-                        },
-                        {data:"nama"},
-                        {data:"status"},
-                        {data:"jenjang"},
-                        {data:"npsn"},
-                        {data:"desa"},
-                        {data:"kecamatan"},
-                        {data:"kabupaten"},
-                        {data:"provinsi"},
-                        {data:"alamat"},
-                        {data:"kodepos"}
-                    ],
-                });
-            })
-        }
-
-        function getList_wilayah() {
-            selectElement = document.querySelector('#select1');
-            selected_wilayah = selectElement.options[selectElement.selectedIndex].value;
-
-            initialize_datatables(selected_wilayah);
-        }
-
-        $(document).ready(function () {
-            initialize_datatables("");
-        });
-
-        $("a.newtab").on("click",function(){
-            window.open('https://www.linkedin.com/in/dedisemara/','_blank');
-        });
-    </script>
+    <script src="main_script.js"></script>
 </body>
 </html>
